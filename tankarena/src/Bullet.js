@@ -14,7 +14,7 @@ class Bullet extends Component {
 
   componentDidMount() {
     this.setState({
-      timer: setInterval(this.tick, 30)
+      timer: setInterval(this.tick, 2)
     })
   }
 
@@ -34,8 +34,6 @@ class Bullet extends Component {
     var left = this.state.left
     var top = this.state.top
 
-    // console.log(left, top)
-    console.log(this.props.direction)
     switch (this.props.direction) {
       case 0:
         top -= 5;
@@ -52,9 +50,6 @@ class Bullet extends Component {
       default:
         break;
     }
-
-    // console.log(top)
-    // console.log(left)
 
     this.setState ({
       left: left,

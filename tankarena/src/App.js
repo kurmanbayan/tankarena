@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css'
 import ActiveUsers from './ActiveUsers.js';
 import BulletMove from './BulletMove'
-import tank from './tank.png'
+// import tank from './tank.png'
 
 class App extends Component {
   constructor() {
@@ -23,8 +23,8 @@ class App extends Component {
           y: 40
         }
       ],
-      top: 700,
-      left: 800,
+      top: 100,
+      left: 200,
       bulletStartMove: false,
       moveDirection: 0,
     }
@@ -84,7 +84,12 @@ class App extends Component {
           <div className="col-md-9" onKeyDown={this.handleKeyPress} tabIndex="0">
             <div className="solidBorder" >
               <div className="tank" style={{"top": this.state.top + "px", left: this.state.left + "px"}}/>
-              <BulletMove direction={this.state.moveDirection} top={this.state.top} left={this.state.left} bulletStartMove={this.state.bulletStartMove} onBulletStop={this.handleBulletMovement}/>
+
+              <BulletMove direction={this.state.moveDirection}
+                top={this.state.top} left={this.state.left}
+                bulletStartMove={this.state.bulletStartMove}
+                onBulletStop={this.handleBulletMovement}
+              />
             </div>
           </div>
         </div>
