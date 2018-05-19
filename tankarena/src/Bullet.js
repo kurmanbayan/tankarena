@@ -13,7 +13,17 @@ class Bullet extends Component {
   }
 
   componentDidMount() {
+    var top = this.state.top
+    var left = this.state.left
+    if (this.props.direction === 0 || this.props.direction === 2) {
+      left += 20
+    }
+    else {
+      top += 20
+    }
     this.setState({
+      left: left,
+      top: top,
       timer: setInterval(this.tick, 2)
     })
   }
@@ -23,7 +33,7 @@ class Bullet extends Component {
   }
 
   tick = () => {
-    if (this.state.left > 1024) {
+    if (this.state.left > 900 || this.state.top < 10 || this.state.top > 630 || this.state.left < 15) {
       this.setState ({
         delBullet: true
       })
@@ -38,10 +48,10 @@ class Bullet extends Component {
       case 0:
         top -= 5;
         break;
-      case 1:
+      case 2:
         top += 5;
         break;
-      case 2:
+      case 1:
         left += 5;
         break;
       case 3:

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css'
 import ActiveUsers from './ActiveUsers.js';
 import BulletMove from './BulletMove'
-// import tank from './tank.png'
 
 class App extends Component {
   constructor() {
@@ -13,18 +12,8 @@ class App extends Component {
         "player2",
         "player3"
       ],
-      tankLocations: [
-        {
-          x: 20,
-          y: 45
-        },
-        {
-          x: 100,
-          y: 40
-        }
-      ],
-      top: 100,
-      left: 200,
+      top: 500,
+      left: 700,
       bulletStartMove: false,
       moveDirection: 0,
     }
@@ -43,19 +32,19 @@ class App extends Component {
 
     switch (e.key) {
       case "w":
-        top -= (top > 5 ? 5 : 0);
+        top -= (top > 10 ? 10 : 0);
         direction = 0
         break;
       case "s":
-        top += (top < 970 ? 5 : 0);
-        direction = 1
-        break;
-      case "d":
-        left += (left < 985 ? 5 : 0)
+        top += (top < 590 ? 10 : 0);
         direction = 2
         break;
+      case "d":
+        left += (left < 860 ? 10 : 0)
+        direction = 1
+        break;
       case "a":
-        left -= (left > 20 ? 5 : 0)
+        left -= (left > 20 ? 10 : 0)
         direction = 3
         break;
       case "l":
@@ -83,7 +72,9 @@ class App extends Component {
           </div>
           <div className="col-md-9" onKeyDown={this.handleKeyPress} tabIndex="0">
             <div className="solidBorder" >
-              <div className="tank" style={{"top": this.state.top + "px", left: this.state.left + "px"}}/>
+              <div className="tank" style={{"top": this.state.top + "px", left: this.state.left + "px",
+                "transform": `rotate(${this.state.moveDirection * 90}deg)`
+              }}/>
 
               <BulletMove direction={this.state.moveDirection}
                 top={this.state.top} left={this.state.left}
